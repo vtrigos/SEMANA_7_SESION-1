@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>SASS</title>
+</head>
+
+<body>
+    <div class="introduccion">
+        <h1>INTRODUCCIÓN</h1>
+
+        <h2><b>CSS:</b> Como lo hemos venido usando</h2>
+        <p>Hasta ahora para crear estilos para cambiar el diseño de nuestro html usamos una hoja de estilo CSS (Lenguaje
+            reconocido por el navegador pero no es un lenguaje de programación) que nos permite controlar el diseño y
+            darle formato a nuestras páginas web como definir <b>colores, fuentes, márgenes, alineación y
+                distribución</b> de los elementos de la pàgina web.</p>
+
+        <p>Para llamar a nuestro CSS en nuetro html hemos usado 3 formas:</p>
+
+        <ol>
+            <li><b>Uso externo:</b> Enlazamos nuetros CSS mediante la etiqueta &lt;link&gt;,
+                Ejemplo:
+                &lt;link rel="stylesheet" href="./style.css&gt;<br>que colocaremos dentro de nuestra etiqueta
+                &lt;head&gt; y así llamaremos a todo el código que generaremos a un archivo CSS externo.</li>
+            <li><b>Uso interno:</b> Colocaremos CSS dentro de nuestra página HTML usando la etiqueta &lt;style&gt;
+                dentro de &lt;head&gt;.
+
+                <p>Ejemplo:</p>
+
+                <pre><code>
+        &lt;head&gt;
+            &lt;style&gt;
+                body {
+                    background-color: blue;
+                }
+            &lt;/style&gt;
+        &lt;/head&gt;
+        </code></pre>
+
+            </li>
+            <li><b>Uso inline:</b> Uso directo a los elementos HTML usando el atributo style.<br>
+                <p>Ejemplo:</p>
+                &lt;h1 style="color: blue;"&gt; Título de muestra&lt;h1&gt;
+            </li>
+        </ol>
+
+        <h2>DESVENTAJAS CSS PLANO</h2>
+        <p>Hasta ahora hemos utilizado la forma del llamado externo pero esto es más recomendable para proyectos
+            pequeños por ejemplo crear una landing page. A continuación indicamos algunas desventajas de usar CSS PLANO:
+        </p>
+
+        <ul>
+            <li>Si nuestro proyecto tiene muchas páginas web es muy probable que nuestro CSS tenga muchos bloques de
+                código CSS (Ejm. más de 10000 líneas) y esto hace que la <b>lectura o ubicación de elementos sea
+                    complicada</b>.</li>
+            <li>Si quisieramos crear varios CSS para facilitar ubicación y lectura del code por ejemplo tendriamos que
+                hacer la llamada en el html por ejemplo si crearamos 10 CSS tendriamos que hacer 10 llamadas en al web y
+                no es recomendable para el tema de <b>performance y posicionamiento.</b></li>
+            <li>No permite hacer escalable el CSS, <b>no podemos automatizar y reutilizar.</b></li>
+            <li>El trabajo <b>no se puede hacer modular</b> y dificulta el trabajo en equipo.</li>
+        </ul>
+
+        <h2>QUE ES UN PROCESADOR</h2>
+
+        <p>Un procesador CSS es una herramienta que <b>escala las capacidades del CSS plano</b> al permitir el uso de
+            variables, anidación, funciones, operaciones matemáticas, etc. Esta herramientas procesa el código fuente
+            escrito en un lenguaje de preprocesador y lo convierte en CSS estándar, que los navegadores puedan entender.
+            Entre los más conocidos tenemoa a: STYLUS, LESS y SAS
+        <p>
+
+        <h2>VENTAJAS DEL PROCESADOR</h2>
+
+        <ul>
+            <li>Permite convertir un CSS plano a <b>escalable.</b></li>
+            <li><b>Mejoran la productividad y mantenimiento</b> del código CSS.</li>
+            <li>Nos permite estructurar CSS usando la <b>modularidad (Componentes y secciones)</b> para nuestros
+                proyectos podemos tener varios archivos para un mejor manejo del CSS y evitar sobrecarga de code.</li>
+            <li><b>Reduce</b> el tema de sobreescritura.</li>
+            <li>Permite usar <b>valores reutilizables</b> para facilitar el control de cambios en el diseño.</li>
+            <li>Administrar <b>guìas de estilos</b> mediante variables.</li>
+            <li><b>Optimiza y permite el trabajo de equipo</b> en un proyecto grande.</li>
+        </ul>
+
+        <h2 class="color-sass">QUÉ ES SASS</h2>
+
+        <p>Es un lenguaje que <b>extiende las capacidades del CSS estándar</b>, usa arquitectura y nomenclatura CSS.
+            SASS usa un <b>compilador</b> que permite generar un archivo css para que este sea integrado en el html y
+            asì el navegador lo reconozca. Es decir todo lo que escribamos en SASS se traducira en CSS en el archivo
+            generado automáticamente.</p>
+
+        <p>Al trabajar de forma modular SASS podemos crear varios archivos (<b>parches</b>) que serán importados en 1
+            principal y este es el que se compila.</p>
+
+        <p>Ejemplo: Puedo crear mi archivo <b>styles.scss</b> y este lo compilo (generará 2 archivos: <b>styles.css</b>
+            y <b>styles.css.map</b>) cada vez que grabe genera/actualiza el css en el archivo styles.css por eso el
+            compilado debe estar activo. Si tuvieramos varios parches debemos evitar el compilado pues <b>sólo 1 se
+                compila</b>, entonces para evitar que un parche sea compilado debemos colocar al inicio del nombre del
+            archivo parche el guión bajo ( ejm.: _fuentes.scss )</p>
+
+
+        <h2>VARIABLES</h2>
+        <p>Contenedor que permite guardar valores que se pueden reutilizar en todo nuestro proyecto CSS.</p>
+
+        <p>Ejm.: Usando variable <b>$color-titulo-principal</b></p>
+
+        <pre><code> 
+        $color-titulo-principal: #3498db;
+        $alto-linea: 1.5;
+        
+        h1 {
+            color: $color-titulo-principal;
+        }
+
+        body {
+            line-height: $alto-linea; 
+        }
+    </code></pre>
+
+
+        <h2>SCOPE</h2>
+        <p>Se refiere al alcance o ámbito de una variable</p>
+
+        <p>Ejm.: Usando variable <b>$color-subtitulos</b>, en la clase color-sass variará su valor tras nueva
+            asignación.</p>
+
+        <pre><code> 
+        $color-subtitulos: #cd0606;
+
+        h2 {
+            color: $color-subtitulos;
+        } 
+        
+        .color-sass {
+            $color-subtitulos: #0f5920;
+            color: $color-subtitulos;
+        }
+    </code></pre>
+
+
+        <h2>ANIDAMIENTO</h2>
+
+        <p>Nos permite escribir CSS de forma estructurada y con jerarquía aplicando estilos de manera más organizada y
+            estableciendo un mejor entendimiento de la relación de padre e hijo entre selectores mediante el anidado
+            (uno dentro de otro) pudiendo ser 2 o más anidados(para ramificaciones de parientes).</p>
+
+        <p>Ejm.: Aquí <b>b</b> es hijo de <b>p</b> por ende todas las negritas que se encuentren dentro de la etiqueta p
+            serán de color azul.</p>
+
+        <pre><code>
+        p {
+            b {
+                color: blue;
+            }
+        }
+    </code></pre>
+
+        <h2>AMPERSAN PADRE</h2>
+
+        <p>El uso de <b>&</b> en SASS se usa para referirse al selector padre dentro de un anidamiento de manera
+            eficiente y mantener el código CSS más organizado y fácil de entender.</p>
+
+        <p>Ejm.: Aquí notamos como la pseudo clase se refiere directamente a la clase botón mediante &.</p>
+
+        <pre><code> 
+        .boton {
+            background-color: #9927c2;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+          
+            &:hover {
+              background-color: #2941b9;
+            }
+          }
+    </code></pre>
+
+
+        <button class="boton">EJEMPLO &</button>
+        <br> <br>
+
+        <h2>IMPORT</h2>
+
+        <p>Se usa para dividir (modular) css en varios archivos (parches) pero como al final se compilará sólo uno debe
+            anteponerse a los archivos parches el "_", estos serán llamados al archivo principal mediante <b>@import</b>
+        </p>
+
+        <p>Ejm.: _maindata.scss</p>
+
+        <p>Este archivo parche será llamado mediante import en index.html :<b> @import 'maindata';</b></p>
+    </div>
+
+</body>
+
+</html>

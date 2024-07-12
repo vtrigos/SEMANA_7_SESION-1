@@ -1,0 +1,94 @@
+@import 'maindata';
+
+//VARIABLES
+
+$color-titulo-principal: #3498db;
+$alto-linea: 1.5;
+
+h1 {
+    color: $color-titulo-principal;
+}
+
+ol, ul {
+    padding-left: 30px;
+}
+
+body{
+    line-height: $alto-linea; 
+    }
+
+.introduccion{
+    padding: 0 20px 20px;
+}
+
+//SCOPE
+
+$color-subtitulos: #cd0606;
+
+h2 {
+    color: $color-subtitulos;
+} 
+
+.color-sass {
+    $color-subtitulos: #0f5920;
+    color: $color-subtitulos;
+}
+
+//ANIDAMIENTO
+
+p {
+    b {
+        color: blue;
+    }
+}
+
+
+// AMPERSAN PADRE
+
+.boton {
+    background-color: #9927c2;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #2941b9;
+    }
+  }
+
+  header {
+    margin:0 auto;
+    background-color: #ffe600;
+  }
+
+.container {
+    max-width: 1180px;
+    height: 80px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr;
+
+    column-gap: 20px;
+}
+
+.imgdown{
+    width: 340px;
+    height: auto;
+}
+
+.form_search
+{
+    display: flex;
+    justify-content:flex-start;
+}
+
+.search {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #cdcdcf;
+
+    margin-bottom: 20px;
+}
